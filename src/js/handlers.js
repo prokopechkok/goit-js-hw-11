@@ -1,20 +1,15 @@
-import { pageNum } from '..';
+// import { pageNum } from '..';
 import { getPicturesFromApi } from './getPicturesFromApi';
 import { refs } from './refs';
-
+let pageNum = 1;
 export async function onSearch(e) {
   e.preventDefault();
-  let newPageNumber = 1;
+  pageNum = 1;
+
   refs.galleryList.innerHTML = '';
-  await getPicturesFromApi(
-    refs.searchForm.elements.searchQuery.value,
-    newPageNumber
-  );
+  await getPicturesFromApi(refs.searchForm.elements.searchQuery.value, pageNum);
 }
 export async function onLoadMore() {
-  let newPageNumber = pageNum + 1;
-  await getPicturesFromApi(
-    refs.searchForm.elements.searchQuery.value,
-    newPageNumber
-  );
+  pageNum++;
+  await getPicturesFromApi(refs.searchForm.elements.searchQuery.value, pageNum);
 }
