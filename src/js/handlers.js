@@ -20,8 +20,10 @@ export async function onSearch(e) {
 
   pageNum = 1;
   refs.galleryList.innerHTML = '';
+  //тут треба ховати кнопку лоадмор
 
   const { data } = await getPicturesFromApi(searchQuery, pageNum);
+  //тут її повернути?
   checkData(data, searchQuery, pageNum);
 }
 //================================================================================
